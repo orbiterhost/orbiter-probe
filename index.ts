@@ -86,23 +86,19 @@ const ABI: any[] = [
 ];
 
 export async function getAllContractEvents() {
-  // Create a public client
   const client = createPublicClient({
     transport: http(RPC_URL),
   });
 
   try {
-    // Extract all event definitions from the ABI
     const eventDefinitions = ABI.filter((item) => item.type === "event");
 
     if (eventDefinitions.length === 0) {
       throw new Error("No events found in the provided ABI");
     }
 
-    // Create an object to store events by type
     const eventsByType: Record<string, any[]> = {};
 
-    // Fetch logs for each event type
     for (const eventDef of eventDefinitions) {
       if (!eventDef.name) continue;
 
@@ -137,13 +133,11 @@ async function downloadIPFSDirectory(
     throw new Error("CID is required");
   }
 
-  // Construct the IPFS URL
   const url = `https://ipfs.io/ipfs/${cid}?download=true&format=tar&filename=${cid}.tar`;
 
   console.log(`Downloading IPFS directory with CID: ${cid}`);
 
   try {
-    // Fetch the content
     const response = await fetch(url);
 
     if (!response.ok) {
@@ -152,10 +146,7 @@ async function downloadIPFSDirectory(
       );
     }
 
-    // Create the full output file path
     const filePath = `${outputPath}/${cid}.tar`;
-
-    // Bun-specific: Use Bun.write instead of fs.promises
     await Bun.write(filePath, response);
 
     console.log(`Successfully downloaded to: ${filePath}`);
