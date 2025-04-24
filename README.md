@@ -1,6 +1,6 @@
 ## Orbiter Probe
 
-Orbiter is a website/web app hosting platform that is both open source and uses technologies that prevent vendor lock-in. To prove this, this tool allows you to "credibly exit" from Orbiter without needing to use any Orbiter APIs or requesting permission from Orbiter. 
+Orbiter is a website/web app hosting platform that is both open source and uses technologies that prevent vendor lock-in. To prove this, this tool allows you to ["credibly exit"](https://newsletter.squishy.computer/p/credible-exit) from Orbiter without needing to use any Orbiter APIs or requesting permission from Orbiter. 
 
 It will extract the most recent version of your site and download it to your computer. 
 
